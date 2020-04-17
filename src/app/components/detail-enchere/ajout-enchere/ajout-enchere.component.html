@@ -1,0 +1,47 @@
+
+<app-header></app-header>
+<div class="container">
+    <form [formGroup]="addProduitForm" >
+
+        <div class="form-group">
+            <label for="name">product:</label>
+            <input type="text" class="form-control" id="name" name="name" formControlName="name">
+            <div *ngIf="name.touched && name.invalid">
+                <small *ngIf="name.errors.required" class="form-text text-danger"> Required</small>
+                <small *ngIf="name.errors.pattern" class="form-text text-danger">Invalid name</small>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="startingDate">starting date :</label>
+            <input type="date" class="form-control" id="startingDate" name="startingDate" formControlName="startingDate">
+            <div *ngIf="startingDate.touched && startingDate.invalid">
+                <small *ngIf="startingDate.errors.required" class="form-text text-danger"> Required</small>
+                <small *ngIf="startingDate.errors.pattern" class="form-text text-danger">Invalid price</small>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="endingDate">ending date :</label>
+            <input type="date" class="form-control" id="endingDate" name="endingDate" formControlName="endingDate">
+            <div *ngIf="endingDate.touched && endingDate.invalid">
+                <small *ngIf="endingDate.errors.required" class="form-text text-danger"> Required</small>
+                <small *ngIf="endingDate.errors.pattern" class="form-text text-danger">Invalid price</small>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="startingPrice">starting price :</label>
+            <input type="number" class="form-control" id="startingPrice" name="price" formControlName="startingPrice">
+            <div *ngIf="startingPrice.touched && startingPrice.invalid">
+                <small *ngIf="startingPrice.errors.required" class="form-text text-danger"> Required</small>
+                <small *ngIf="startingPrice.errors.pattern" class="form-text text-danger">Invalid price</small>
+
+            </div>
+        </div>
+        
+       
+        <button  type="submit"  (click)="venteEnchere()" class="btn btn-outline-info" [disabled]="addProduitForm.invalid">Add produit</button>
+
+    </form>
+</div>

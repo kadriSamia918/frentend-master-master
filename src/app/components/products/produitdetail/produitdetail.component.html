@@ -1,0 +1,67 @@
+<app-header></app-header>
+<div class="container">
+  <br>
+    <div class="row">
+        <div class="col">
+           <div class="card mb-8" style="max-width: 18rem;">
+  <div class="row no-gutters">
+    <div class="col-md-12">
+      <img src="assets/images/img.png" class="card-img" >
+      <h3>Image Uploading Module</h3>
+
+
+      <div>
+          <input type="file" (change)="onFileChanged($event)">
+      
+          <img [src]="imgURL" height="200" *ngIf="imgURL">
+      </div>
+      
+      <input type="button" (click)="onUpload()" value="upload">
+      
+      <hr />
+      
+      Received Image:
+      
+     
+      <img [src]="convertedImage" >
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{produit.name}}</h5>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+        <br>
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              {{produit.description}}
+            </div>
+          </div>
+
+            <hr>
+            <h1>{{produit.price}} TND</h1>
+            <button  [routerLink]="['/cart']"  type="button" class="btn btn-secondary btn-lg btn-block">J'ACHETE
+                
+            </button>
+          
+        </div>
+        
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-header"><h2>DETAILS</h2></div>
+                <div class="card-body">
+                    <h3>date de creation :</h3>
+                  {{produit.createdAt}}
+                  <h3 > date de dernier mise a jour:</h3>
+                  {{produit.updatedAt}}
+                  <button type="button" class="btn btn-warning">SUIVRE</button>
+                </div>
+              </div>
+
+        
+
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<app-header></app-header>  
+<div class="container">
+  <h1 class="text-center text-danger"> List des produits</h1>
+
+    <div class="row"> 
+
+           
+            <div *ngIf="produits.length==0" class="alert alert-warning">there is no produit</div>
+            <div *ngIf="produits.length>0" class="table table-sm">
+                <div class="row">
+                    <div *ngFor="let produit of produits"  >
+                        
+                            <div class="col-md-5">
+                                    <div class="card" style="width: 20rem;" >
+                                            <img src="assets/images/img.png" (click)="onSelect(produit)" class="card-img-top">
+                                    
+
+                                            
+                                             <div class="card-body" >
+                                                 <h1 class="card-title text-center">{{produit.name}}</h1>
+                                                <div *ngIf="auth.isVendeur()" >
+                                                  <button  class="btn btn-warning mr-2"  (click)="onSelectUpdate(produit)"><i class="far fa-edit"></i></button>
+                                                <button class="btn btn-danger"  style="width: 40px" (click)="deleteProduit(produit)"><i class="far fa-trash-alt"></i></button>
+                                               </div>
+                                               <div class="row">
+                                                   
+                                                 <label><h2>Price: {{produit.price|number:'0.00'}} TND</h2></label>
+                                                </div>
+                                                <div class="row">
+                                                 <label><h2>description: {{produit.description}}</h2></label>
+                                                 </div>
+                                           <form #f="ngForm" (ngSubmit)="onAddProductToCaddy(produit)">
+                                             <label class="control-label"><h3>Quantité :</h3></label>
+                                             <input type="number" name="quantity"  [(ngModel)]="produit.quantity" ngModel style="width: 40px">
+                                             <button>
+                                              <img src="assets/images/caddy.png" style="width: 20px" >
+                                              </button>
+                                       
+                                             </form>
+                                
+                                    </div>
+                                    </div>
+                                    </div>
+                        </div>
+                        </div>
+                    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

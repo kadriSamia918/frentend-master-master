@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-md navbar-light  bg-light">
+  <a class="navbar-brand" style="font-size: 2em; font-weight: bold" routerLink="/">Eshop</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <hr class="p-0 m-0">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/listproduit">BROWSER</a>
+          </li>
+
+      </ul>
+
+      <form class="form-inline my-2 my-lg-0">
+        <a class="nav-link login-register" *ngIf="!isLoggedIn && auth.isAdmin()" [routerLink]="['/user']"> mangement</a>
+        <div *ngIf="auth.isVendeur()">
+       <a class="nav-link login-register"  [routerLink]="['/ajouterProduit']"> vente direct</a>
+      </div>
+      <div *ngIf="auth.isVendeur()" >
+        <a class="nav-link login-register"  [routerLink]="['/ajoutEnchere']"> vente Enchere</a>
+       </div>
+       <div >
+        <a class="nav-link login-register"  [routerLink]="['/listproduit']"> direct</a>
+       </div>
+       <a class="nav-link login-register"  [routerLink]="['/enchere']"> enchere</a>
+
+       <div >
+       
+       </div>
+       <a class="nav-link login-register" *ngIf="!auth.isAuthenticated()" routerLink="/login">Login</a>
+       <a class="nav-link login-register" *ngIf="!auth.isAuthenticated()" routerLink="/register">register</a>
+        <a class="badge badge-danger" *ngIf="auth.isAuthenticated()" (click)="onLogout()">logout</a>
+       <a *ngIf="auth.isAuthenticated() && !auth.isAdmin()"><span class="badge">{{caddySer.currentCaddyName}} :
+        {{caddySer.getSize()}}</span></a>
+       <a routerLink="/cart">
+      
+        <img  *ngIf="auth.isAuthenticated() && !auth.isAdmin()"class="img-circle img-thumbnail img-rounded" src="assets/images/caddy.png" style="width: 40px;">
+      </a>
+          <form class="navbar-form navbar-right inline-form">
+            <div class="form-group">
+              <input type="search" class="input-sm form-control" placeholder="Recherche">
+              <button type="submit" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-eye-open"></span> Chercher</button>
+            </div>
+          </form>
+      </form>
+    </div>
+  </nav>

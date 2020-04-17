@@ -1,0 +1,53 @@
+
+
+
+<app-header>
+</app-header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 mt-5 mb-3">
+            <h1> List des users</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div *ngIf="users.length==0" class="alert alert-warning">there is no user</div>
+            <table *ngIf="users.length>0" class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>firstname</th>
+                        <th>lastname</th>
+                        <th>cin</th>
+                        <th>phone</th>
+                        <th>email</th>
+                        <th>state</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users;let i = index">
+                        <th>{{i}}</th>
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.cin}}</td>
+                        <td>{{user.phone}}</td>
+                        <td>{{user.email}}</td>
+                        <td>
+                            <span *ngIf="user.state" class="badge badge-pill badge-success">acheteur</span>
+                            <span *ngIf="!user.state" class="badge badge-pill badge-danger">vendeur</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-info mr-2" [routerLink]="['/']"><i class="fas fa-tasks"></i></button>
+                            <button *ngIf="!user.state" class="btn btn-secondary mr-2"><i class="fas fa-user-check"></i></button>
+                            <button *ngIf="user.state" (click)="updateState(user.id)" class="btn btn-secondary mr-2"><i class="fas fa-user-times"></i></button>
+                            <button class="btn btn-secondary" (click)="onDelete(user)"><i class="far fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

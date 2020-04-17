@@ -1,0 +1,36 @@
+<app-header></app-header>
+      <div>
+        <a  (click)="onAddCaddy()" class="badge badge-danger">addCaddy </a>
+      </div>
+      <ul>
+      <li [ngClass]="c.name==caddySer.currentCaddyName?'active':''" *ngFor="let c of caddySer.listCaddies">
+        <a class="badge badge-info" (click)="onSelectCaddy(c)">{{c.name}}</a>
+      </li>
+    </ul>
+
+<div  *ngIf="caddy.items">
+  <h2 >{{caddy.name}}</h2>
+  <div >
+    <table class="table table-bordered" >
+      <tr>
+        <th>ID</th><th>Name</th><th>Quantity</th><th>Price</th>
+      </tr>
+      <tr *ngFor="let item of caddy.items|keyvalue">
+        <td>{{item.value.id}}</td>
+        <td>{{item.value.name}}</td>
+        <td>{{item.value.quantity|number:'0.2'}}</td>
+        <td>{{item.value.price|number:'0.2'}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="onRemoveProductFromCaddy(item.value)"><i class="far fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">Total</td>
+        <td>{{getTotal()|number:'0.2'}}</td>
+      </tr>
+    </table>
+    <a class="badge badge-success" (click)="onNewOrder()">Commander</a>
+  </div>
+
+</div>
